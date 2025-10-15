@@ -1,0 +1,55 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+
+# VS Code settings (keep only project-specific ones)
+.vscode/launch.json
+.vscode/tasks.json
+.vscode/c_cpp_properties.json
+.vscode/extensions.json
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+*~
+
+# Logs
+*.log
+
+# IDE files
+.idea/
+*.swp
+*.swo
+
+# Python virtual environments
+venv/
+env/
+.env
+
+# Blender backup files
+*.blend1
+*.blend2
+
+# Zip files in releases (they're generated)
+releases/*/*.zip
+
+# Exclude but keep structure
+!releases/blender_extensions/
+!releases/gumroad_commercial/
+releases/blender_extensions/*.zip
+releases/gumroad_commercial/*.zip
