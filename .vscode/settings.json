@@ -1,0 +1,37 @@
+{
+    "python.analysis.extraPaths": [
+        "${workspaceFolder}"
+    ],
+    "python.analysis.typeCheckingMode": "basic",
+    "python.analysis.autoImportCompletions": true,
+    "python.analysis.diagnosticMode": "workspace",
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": false,
+    "python.defaultInterpreterPath": "python",
+    "files.associations": {
+        "*.py": "python"
+    },
+    // Specific settings for Blender addon development
+    "python.analysis.stubPath": "./typings",
+    "python.analysis.include": [
+        "${workspaceFolder}/**/*.py"
+    ],
+    "python.analysis.exclude": [
+        "**/node_modules",
+        "**/__pycache__",
+        ".git"
+    ],
+    // Pylance settings for better Blender support
+    "python.analysis.packageIndexDepths": [
+        {
+            "name": "bpy",
+            "depth": 10,
+            "includeAllSymbols": true
+        },
+        {
+            "name": "bmesh", 
+            "depth": 10,
+            "includeAllSymbols": true
+        }
+    ]
+}

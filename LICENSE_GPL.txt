@@ -1,0 +1,32 @@
+GNU GENERAL PUBLIC LICENSE
+Version 3, 29 June 2007
+
+NS Toolkit - Mesh Cleanup Pro
+Copyright (C) 2025 Nandur Studio (Nandang Duryat)
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+---
+
+ADDITIONAL INFORMATION:
+
+This add-on was created by Nandur Studio (Nandang Duryat) in 2025.
+
+Contact: 
+- For bug reports and feature requests, please use the Blender Extensions platform
+- For general inquiries about Nandur Studio tools and services, visit our website
+
+The full GPL 3.0 license text can be found at: https://www.gnu.org/licenses/gpl-3.0.txt
+
+This add-on is part of the NS Toolkit suite of professional Blender tools.

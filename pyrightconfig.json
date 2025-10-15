@@ -1,0 +1,20 @@
+{
+    "include": [
+        "**/*.py"
+    ],
+    "exclude": [
+        "**/node_modules",
+        "**/__pycache__",
+        "releases",
+        "build"
+    ],
+    "reportMissingImports": "none",
+    "reportMissingTypeStubs": false,
+    "pythonVersion": "3.11",
+    "pythonPlatform": "All",
+    "extraPaths": [
+        "."
+    ],
+    "typeCheckingMode": "basic",
+    "useLibraryCodeForTypes": true
+}

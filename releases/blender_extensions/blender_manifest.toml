@@ -1,0 +1,53 @@
+# Blender Extension Manifest for NS Toolkit - Mesh Cleanup Pro
+# Copyright (C) 2025 Nandur Studio (Nandang Duryat)
+# Licensed under GPL 3.0+ for Blender Extensions Platform
+
+schema_version = "1.0.0"
+
+# Required fields
+id = "ns_toolkit_mesh_cleanup_pro"
+version = "1.0.0"
+name = "NS Toolkit - Mesh Cleanup Pro"
+tagline = "5-in-1: Topology Highlight + Tris to Quads + Merge + Normals"
+maintainer = "Nandur Studio (Nandang Duryat)"
+type = "add-on"
+
+# Blender version requirements
+blender_version_min = "4.2.0"
+
+# License (GPL 3.0+ required for Blender Extensions)
+license = [
+  "SPDX:GPL-3.0-or-later",
+]
+
+# Copyright notice (required by GPL)
+copyright = [
+  "2025 Nandur Studio (Nandang Duryat)",
+]
+
+# Optional: Documentation and support
+website = "https://extensions.blender.org/add-ons/ns-toolkit-mesh-cleanup-pro/"
+
+# Tags for better discoverability (from official supported tags list)
+tags = [
+  "Mesh", 
+  "Modeling"
+]
+
+# Build configuration
+[build]
+paths_exclude_pattern = [
+  "__pycache__/",
+  ".*",
+  "*.zip",
+  "*_commercial*",
+  "*gumroad*",
+  "LICENSE.txt",
+  "assets/",
+  "development/",
+  "docs/",
+  "releases/",
+  "tools/",
+  "FILE_ORGANIZATION.md",
+  "FINAL_STRUCTURE.md"
+]

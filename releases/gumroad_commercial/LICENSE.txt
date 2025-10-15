@@ -1,0 +1,37 @@
+NS Toolkit - Mesh Cleanup Pro
+
+Copyright (c) 2025 Nandur Studio (Nandang Duryat)
+
+Permission is hereby granted to the purchaser of this software to use, copy, 
+and modify this software for personal and commercial projects, subject to the 
+following conditions:
+
+ALLOWED USES:
+- Personal and commercial use in your own projects
+- Use in client work and commissioned projects  
+- Modification for personal use and workflow customization
+- Integration into your personal Blender workflow
+
+PROHIBITED USES:
+- Redistribution or resale of this addon in any form
+- Sharing with others who have not purchased a license
+- Removing or modifying copyright notices
+- Reverse engineering for competitive products
+
+DISCLAIMER:
+This software is provided "as is" without warranty of any kind, express or 
+implied, including but not limited to the warranties of merchantability, 
+fitness for a particular purpose and noninfringement. In no event shall the 
+authors or copyright holders be liable for any claim, damages or other 
+liability, whether in an action of contract, tort or otherwise, arising from, 
+out of or in connection with the software or the use or other dealings in the 
+software.
+
+SUPPORT:
+This software comes with documentation and basic support. For technical 
+issues, please refer to the included documentation first. 
+
+Always backup your Blender projects before using any automation tools.
+
+NS Toolkit © 2025 | Created by Nandur Studio
+Professional Blender tools for modern workflows
