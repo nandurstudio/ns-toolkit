@@ -1,6 +1,6 @@
-# NS Toolkit - Mesh Cleanup Pro (Blender Extensions Version)
+# NS Toolkit - Mesh Cleanup Pro
 
-**Free & Open Source Professional Mesh Cleanup Tool for Blender 4.2+**
+**Professional mesh cleanup with topology visualization tools for Blender 4.2+**
 
 *Created by Nandur Studio (Nandang Duryat) © 2025*  
 *Licensed under GPL 3.0+ - Free for all users*
@@ -9,120 +9,133 @@
 
 ## Overview
 
-NS Toolkit - Mesh Cleanup Pro is a powerful, **completely free** Blender add-on that combines topology visualization with automated mesh cleanup operations. Perfect for game developers, 3D artists, architects, and anyone working with imported or messy geometry.
+NS Toolkit - Mesh Cleanup Pro is a lightweight, **completely free** Blender add-on that streamlines mesh optimization workflows. Built with performance and reliability in mind, it uses advanced bmesh operations for fast, context-independent mesh processing.
 
-**Professional mesh optimization with real-time topology visualization and smart cleanup tools**
+**Perfect for game developers, 3D artists, architects, and anyone working with imported or complex geometry.**
 
 ---
 
-## Features
+## Key Features
 
-### **Topology Visualization**
-- **Highlight Triangles Toggle** - Visual identification of mesh topology
-- **Color-Coded Display**: Red=Triangles, Green=Quads, Blue=N-gons
-- **Real-Time Preview** - See topology before cleanup operations
-- **Easy Toggle** - One-click enable/disable highlighting
+### **Real-Time Topology Visualization**
+- **Scene-wide highlighting** - Visualize ALL mesh objects simultaneously
+- **Smart color coding**: Blue = N-gons, Red = Triangle-dominant, Green = Quad-dominant
+- **Live updates** - Real-time feedback in both Edit and Object modes
+- **Non-intrusive** - Doesn't clutter your undo history
 
-### **Professional Mesh Cleanup Toolkit**
-1. **Real-Time Topology Highlighting** - Live visualization in both Edit and Object modes
-2. **Converts Triangles to Quads** - Smart topology optimization for better mesh flow  
-3. **Merges Vertices by Distance** - Removes duplicate vertices with configurable threshold
-4. **Recalculates Normals Outside** - Fixes inverted faces for proper lighting
-5. **Resets Custom Normal Vectors** - Clears custom normals for clean calculations
+### **Optimized Mesh Cleanup Engine**
+1. **Smart Triangles to Quads** - Advanced bmesh.ops conversion algorithms
+2. **Precise Vertex Merging** - Configurable distance threshold for duplicate removal
+3. **Consistent Normal Calculation** - Automatic outside-facing normal correction
+4. **Custom Normal Reset** - Clean slate for proper lighting calculations
 
-### 🎨 **User-Friendly Interface**
+All operations use **bmesh.ops** for maximum performance and reliability - no context-dependent operators!
+
+### **Clean & Intuitive Interface**
 - **Sidebar Integration**: Access via N-Panel under "NS Toolkit" tab
-- **Topology Visualization**: Toggle highlighting with real-time color feedback
-- **Clean Mesh Action**: Renamed from "Mesh Cleanup Pro" for better clarity
-- **Menu Integration**: Available in Object > Convert menu  
-- **Keyboard Shortcut**: Quick access with `Ctrl + Alt + J`
-- **Batch Processing**: Handle multiple objects simultaneously
+- **One-click operations** - "Clean Mesh" button handles everything
+- **Simple feedback** - Concise success messages without clutter
+- **Keyboard shortcut**: `Ctrl + Alt + J` for quick access
+- **Batch processing**: Handle multiple selected objects at once
 
-### ⚙️ **Customizable Settings**
-- **Adjustable Merge Distance**: Fine-tune vertex merging (0.0001 - 1.0)
-- **Real-time Feedback**: Success notifications with object count
-- **Full Undo Support**: Integrated with Blender's undo system
+### **Performance & Reliability** 
+- **Lightweight package**: Only 8.7KB - 74% smaller than previous versions
+- **bmesh.ops powered**: No UI context dependencies, works in any situation  
+- **Memory efficient**: Proper cleanup and error handling
+- **Undo support**: Main cleanup operations integrate with Blender's undo system
 
 ---
 
-## 📋 System Requirements
+## System Requirements
 
-- **Blender**: 4.2.0 or higher (tested up to 4.5+)
+- **Blender**: 4.2.0 or higher
 - **Platforms**: Windows, macOS, Linux
-- **Performance**: Optimized for large meshes
+- **Package Size**: 8.7KB (lightweight!)
+- **Dependencies**: None - uses Blender's built-in bmesh module
 
 ---
 
-## 🚀 Installation
+## Installation
 
-1. Download the extension from Blender Extensions platform
-2. In Blender: `Edit > Preferences > Get Extensions`
-3. Search for "NS Toolkit" and install
-4. The tool appears in N-Panel under "NS Toolkit" tab
+1. **Blender Extensions**: Search "NS Toolkit" in `Edit > Preferences > Get Extensions`
+2. **Enable**: Find "NS Toolkit - Mesh Cleanup Pro" and enable it
+3. **Access**: Open sidebar (N-key) → "NS Toolkit" tab
+4. **Ready!** Start cleaning your meshes
 
 ---
 
-## 🎮 Usage
+## How to Use
 
 ### Quick Workflow:
-1. Select mesh object(s) in your scene
-2. Open sidebar (N-key) → "NS Toolkit" tab
-3. **Optional**: Toggle "Highlight All Objects" to visualize topology across scene
-   - 🔵 Blue = Has N-gons, 🔴 Red = Triangle-dominant, 🟢 Green = Quad-dominant
-4. Adjust merge distance if needed (default: 0.0001)
-5. Click "Clean Mesh" button
-6. Done! All cleanup operations complete automatically
+1. **Select** mesh object(s) in your scene
+2. **Open** sidebar (N-key) → "NS Toolkit" tab  
+3. **Optional**: Enable "Highlight All Objects" to see topology across your entire scene
+4. **Adjust** merge distance if needed (default: 0.0001 works for most cases)
+5. **Click** "Clean Mesh" button
+6. **Done!** Get simple success notification: "Cleaned X mesh(es) successfully"
 
-### Keyboard Shortcut:
-Press `Ctrl + Alt + J` for instant access to the cleanup tool
+### Topology Visualization:
+- **Blue objects** = Have N-gons (5+ sided faces) 
+- **Red objects** = Triangle-dominant meshes
+- **Green objects** = Quad-dominant meshes (optimal topology)
+- **Live updates** = See changes instantly as you edit
 
-### Real-Time Topology Visualization:
-- **Scene-Wide**: Highlights ALL objects in scene, not just selected
-- **Live Updates**: Real-time color changes in both Object and Edit modes  
-- **Smart Colors**: 🔵 Blue=Has N-gons (priority), 🔴 Red=Triangle-dominant, 🟢 Green=Quad-dominant
-- **Edit Mode**: Instant feedback as you modify mesh topology
-- **Performance**: Optimized handlers with automatic cleanup
-
----
-
-## 🎯 Perfect For
-
-- **Game Development**: Clean CAD imports for game engines
-- **Architecture**: Process BIM models for visualization  
-- **3D Printing**: Ensure manifold geometry before slicing
-- **Animation**: Prepare meshes for subdivision and rigging
-- **General 3D Work**: Any project needing mesh cleanup
+### Pro Tips:
+- Use **Ctrl + Alt + J** for quick cleanup access
+- **Merge distance**: Start with 0.0001, increase for rougher meshes
+- **Batch processing**: Select multiple objects for simultaneous cleanup
+- **Real-time preview**: Enable highlighting before cleanup to see what needs fixing
 
 ---
 
-## ⚙️ Technical Details
+## Perfect For
 
-### Merge Distance Guidelines:
-- **High Detail Objects**: 0.0001 - 0.001
-- **Medium Objects**: 0.001 - 0.01  
-- **Large/Rough Meshes**: 0.01 - 0.1
-
-### Operations Performed:
-1. `mesh.tris_convert_to_quads()` - Triangle to quad conversion
-2. `mesh.remove_doubles(threshold=X)` - Vertex merging
-3. `mesh.normals_make_consistent(inside=False)` - Normal correction
-4. `mesh.customdata_custom_splitnormals_clear()` - Normal vector reset
+- **Game Development**: Clean imported CAD/FBX models for game engines
+- **Architecture**: Process BIM and CAD models for clean visualization
+- **3D Printing**: Ensure watertight geometry before slicing
+- **Animation**: Prepare meshes for subdivision surfaces and rigging
+- **Asset Creation**: Convert triangulated meshes to quad-based topology
+- **Import Cleanup**: Fix messy geometry from various 3D software
 
 ---
 
-## 🛠️ Troubleshooting
+## Technical Details
 
-**Q: Tool doesn't appear after installation**  
-A: Make sure you're in Object Mode and have mesh objects selected
+### What the Addon Does:
+1. **bmesh.ops.join_triangles()** - Intelligently converts triangles to quads
+2. **bmesh.ops.remove_doubles()** - Merges vertices within specified distance
+3. **bmesh.ops.recalc_face_normals()** - Ensures consistent outside-facing normals
+4. **Custom normal cleanup** - Removes custom split normals for clean lighting
 
-**Q: Some triangles remain after conversion**  
-A: Normal behavior - conversion only happens where topology allows
+### Why bmesh.ops?
+- **Faster performance** - Direct mesh data manipulation
+- **More reliable** - No dependency on UI context or active objects
+- **Better error handling** - Robust operation in any Blender state
+- **Memory efficient** - Proper cleanup and resource management
 
-**Q: Merge distance seems aggressive**  
-A: Try smaller values like 0.0001 for detailed meshes
+### Merge Distance Guide:
+- **0.0001**: High-detail models, precise geometry
+- **0.001**: Standard models, most common use case
+- **0.01**: Rough imports, larger tolerances needed
 
-**Q: Getting errors during operation**  
-A: Ensure you have mesh objects selected and you're in Object Mode
+---
+
+## Troubleshooting
+
+**Q: Panel doesn't appear after installation**  
+A: Check that the addon is enabled in Preferences > Add-ons, search for "NS Toolkit"
+
+**Q: "No mesh objects selected" warning**  
+A: Select at least one mesh object before clicking "Clean Mesh"
+
+**Q: Some triangles remain after cleanup**  
+A: This is normal - only triangles that can form proper quads are converted
+
+**Q: Merge distance removes too much detail**  
+A: Use smaller values: try 0.0001 for detailed models, 0.001 for general use
+
+**Q: Highlighting colors seem wrong**  
+A: Colors show dominant topology: Blue=N-gons present, Red=mostly triangles, Green=mostly quads
 
 ---
 
@@ -132,7 +145,7 @@ This is a **free, open-source** project licensed under GPL 3.0+.
 
 ### Get Help:
 - Check this documentation first
-- Report bugs via Blender Extensions platform
+- Report bugs via [GitHub Issues](https://github.com/nandurstudio/ns-toolkit/issues)
 - Join discussions in Blender community forums
 
 ### Contributing:
@@ -155,36 +168,47 @@ Full license: https://www.gnu.org/licenses/gpl-3.0.txt
 
 ---
 
-## 🔄 Version History
+## Version History
 
-### v1.0.0 (2025) - Initial Release  
-- ✅ Real-Time Topology Visualization with scene-wide highlighting
-- ✅ Smart color system: Blue=N-gons (priority), Red=Triangles, Green=Quads
-- ✅ Live updates in both Edit and Object modes
-- ✅ Professional mesh cleanup: Tris to Quads + Merge + Normals + Reset Vectors
-- ✅ Professional UI with dynamic version display
-- ✅ Optimized performance with dual handler system
-- ✅ GPL 3.0+ licensing for Blender Extensions platform
-- ✅ Blender 4.2+ compatibility
+### v1.0.1 (2025) - Compliance & Performance Update
+- **Lightweight package**: 74% size reduction (33KB → 8.7KB)
+- **Better reliability**: Replaced bpy.ops with bmesh.ops for all mesh operations
+- **Cleaner feedback**: Simplified success messages without clutter
+- **Improved performance**: Direct mesh data manipulation, no UI context dependencies
+- **Undo optimization**: Highlight operations no longer clutter undo history
+- **Blender Extensions compliant**: All validation requirements met
 
----
-
-## 🎉 Why Choose NS Toolkit?
-
-- **Completely Free**: No hidden costs, no premium versions
-- **Open Source**: GPL 3.0+ licensed, community-driven
-- **Professional Quality**: Used by industry professionals
-- **Actively Maintained**: Regular updates for Blender compatibility  
-- **Time Saver**: Automates 10+ manual steps into one click
-- **Reliable**: Thousands of successful mesh cleanups
+### v1.0.0 (2025) - Initial Release
+- Real-time topology visualization with scene-wide highlighting
+- Professional mesh cleanup toolkit with automated operations
+- Smart color coding system for topology identification
+- Live updates in both Edit and Object modes
+- GPL 3.0+ open source licensing
 
 ---
 
-**Transform your mesh workflow today with NS Toolkit!** 🚀
+## Why Choose NS Toolkit?
 
-*Happy Blending!*
+- **Completely Free**: GPL 3.0+ licensed, no premium versions
+- **Lightweight**: Only 8.7KB package size
+- **Fast & Reliable**: bmesh.ops powered operations 
+- **No Dependencies**: Uses Blender's built-in tools only
+- **Time Saver**: One-click mesh optimization
+- **Professional Grade**: Built with industry best practices
+- **Open Source**: Transparent, community-driven development
 
 ---
 
-*NS Toolkit © 2025 | Created by Nandur Studio*  
+## Support
+
+- **Documentation**: This README covers all functionality
+- **Bug Reports**: [GitHub Issues](https://github.com/nandurstudio/ns-toolkit/issues)
+- **Feature Requests**: Community suggestions welcome
+- **Source Code**: Available under GPL 3.0+ license
+
+**Ready to optimize your mesh workflow?** Download and start cleaning! 
+
+---
+
+*NS Toolkit v1.0.1 © 2025 | Created by Nandur Studio*  
 *Free & Open Source - Licensed under GPL 3.0+*

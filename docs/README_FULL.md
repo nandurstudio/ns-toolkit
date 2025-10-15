@@ -173,7 +173,7 @@ A: Some complex meshes might need manual normal correction. Try running the tool
 ### Get Help
 - **Documentation**: This README file
 - **Blender Community**: Post questions in Blender forums with "NS Toolkit" tag
-- **Bug Reports**: Include Blender version, OS, and steps to reproduce
+- **Bug Reports**: [GitHub Issues](https://github.com/nandurstudio/ns-toolkit/issues) - Include Blender version, OS, and steps to reproduce
 
 ### About the Creator
 **NS Toolkit** is created by **Nandur Studio (Nandang Duryat)** © 2025

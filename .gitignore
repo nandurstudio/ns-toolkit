@@ -66,3 +66,7 @@ releases/blender_extensions/__init__.py
 releases/blender_extensions/blender_manifest.toml
 releases/gumroad_commercial/__init__.py
 releases/gumroad_commercial/blender_manifest.toml
+
+# Other
+# --- IGNORE ---
+add-on-face-highlighter-pro-v1.3.0

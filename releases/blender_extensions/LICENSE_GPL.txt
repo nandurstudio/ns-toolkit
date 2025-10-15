@@ -24,7 +24,7 @@ ADDITIONAL INFORMATION:
 This add-on was created by Nandur Studio (Nandang Duryat) in 2025.
 
 Contact: 
-- For bug reports and feature requests, please use the Blender Extensions platform
+- For bug reports and feature requests, please use GitHub Issues: https://github.com/nandurstudio/ns-toolkit/issues
 - For general inquiries about Nandur Studio tools and services, visit our website
 
 The full GPL 3.0 license text can be found at: https://www.gnu.org/licenses/gpl-3.0.txt

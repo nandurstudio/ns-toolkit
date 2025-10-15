@@ -68,6 +68,12 @@ python tools/build_extension.py
 - Built on Blender's powerful Python API
 - Designed for Blender 4.2+ ecosystem
 
+## Support
+
+- **Bug Reports**: [GitHub Issues](https://github.com/nandurstudio/ns-toolkit/issues)
+- **Documentation**: [Full Documentation](docs/README_FULL.md)
+- **Build Instructions**: [Development Guide](development/BUILD.md)
+
 ## 📄 License
 
 - **Open Source**: [GPL 3.0+](LICENSE_GPL.txt) for Blender Extensions
