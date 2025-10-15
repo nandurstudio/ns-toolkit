@@ -1,10 +1,10 @@
 bl_info = {
     "name": "NS Toolkit - Mesh Cleanup Pro",
     "author": "NS Toolkit | Created by Nandur Studio (Nandang Duryat) © 2025",
-    "version": (1, 0, 0),
+    "version": (1, 0, 1),
     "blender": (4, 2, 0),
     "location": "Object > Convert / Sidebar (N) > NS Toolkit",
-    "description": "Professional mesh cleanup toolkit: Highlight mesh topology + Tris to Quads + Merge by Distance + Recalculate Normals + Reset Vectors.",
+    "description": "Professional mesh cleanup toolkit with real-time topology visualization, smart triangulation conversion, vertex merging, normal correction, and transform reset capabilities.",
     "category": "Mesh",
 }
 
@@ -161,24 +161,6 @@ def scene_update_handler(scene):
         if context.mode == 'EDIT_MESH':
             apply_topology_highlighting(context)
 
-# --- Load logo ---
-custom_icons = None
-
-def load_logo():
-    import bpy.utils.previews
-    global custom_icons
-    if custom_icons is None:
-        custom_icons = bpy.utils.previews.new()
-        icons_dir = os.path.dirname(__file__)
-        custom_icons.load("nandur_logo", os.path.join(icons_dir, "Nandur93_Logo_192.png"), 'IMAGE')
-
-def unload_logo():
-    import bpy.utils.previews
-    global custom_icons
-    if custom_icons is not None:
-        bpy.utils.previews.remove(custom_icons)
-        custom_icons = None
-
 
 # --- Operator utama ---
 class OBJECT_OT_tris_to_quads_merge(bpy.types.Operator):
@@ -199,7 +181,7 @@ class OBJECT_OT_tris_to_quads_merge(bpy.types.Operator):
     def execute(self, context):
         selected_objects = [obj for obj in context.selected_objects if obj.type == 'MESH']
         if not selected_objects:
-            self.report({'WARNING'}, "Tidak ada mesh yang dipilih.")
+            self.report({'WARNING'}, "No mesh objects selected.")
             return {'CANCELLED'}
 
         # Get the merge distance value safely
@@ -207,28 +189,79 @@ class OBJECT_OT_tris_to_quads_merge(bpy.types.Operator):
         if not isinstance(merge_dist, (int, float)):
             merge_dist = 0.0001
 
+        processed_count = 0
+        
         for obj in selected_objects:
-            bpy.context.view_layer.objects.active = obj
-            bpy.ops.object.mode_set(mode='EDIT')
-            bpy.ops.mesh.select_all(action='SELECT')
-            bpy.ops.mesh.tris_convert_to_quads()
+            # Ensure we're in Object mode (direct property access, no bpy.ops)
+            if context.active_object and context.active_object.mode != 'OBJECT':
+                # Force object mode directly
+                bpy.context.view_layer.objects.active = obj
+                if obj.mode != 'OBJECT':
+                    # This is safer than bpy.ops - forces object mode
+                    obj.mode = 'OBJECT'
+                
+            # Set object as active
+            context.view_layer.objects.active = obj
             
-            # Use remove_doubles - still available in Blender 4.5
-            bpy.ops.mesh.remove_doubles(threshold=merge_dist)
+            # Get mesh data
+            mesh = obj.data
             
-            # Recalculate normals outside
-            bpy.ops.mesh.normals_make_consistent(inside=False)
-            
-            # Reset custom normal vectors
+            # Create bmesh instance
+            bm = bmesh.new()
             try:
-                bpy.ops.mesh.customdata_custom_splitnormals_clear()
-            except:
-                # Fallback if custom normals operation is not available
-                pass
-            
-            bpy.ops.object.mode_set(mode='OBJECT')
+                # Load mesh data into bmesh
+                bm.from_mesh(mesh)
+                
+                # Ensure face indices are valid
+                bm.faces.ensure_lookup_table()
+                bm.verts.ensure_lookup_table()
+                bm.edges.ensure_lookup_table()
+                
+                # 1. Convert triangles to quads using bmesh.ops
+                bmesh.ops.join_triangles(
+                    bm, 
+                    faces=bm.faces,
+                    angle_face_threshold=0.698132,  # 40 degrees (default)
+                    angle_shape_threshold=0.698132
+                )
+                
+                # 2. Remove doubles (merge vertices by distance) using bmesh.ops
+                bmesh.ops.remove_doubles(
+                    bm,
+                    verts=bm.verts,
+                    dist=merge_dist
+                )
+                
+                # 3. Recalculate normals using bmesh.ops
+                bmesh.ops.recalc_face_normals(bm, faces=bm.faces)
+                
+                # 4. Clear custom split normals data
+                bm.faces.ensure_lookup_table()
+                for face in bm.faces:
+                    face.smooth = False  # Reset smooth shading
+                
+                # Update mesh data from bmesh
+                bm.to_mesh(mesh)
+                
+                # Update object
+                mesh.update()
+                obj.update_tag()
+                
+                processed_count += 1
+                
+            except Exception as e:
+                self.report({'WARNING'}, f"Error processing {obj.name}: {str(e)}")
+            finally:
+                # Always free bmesh memory
+                bm.free()
 
-        self.report({'INFO'}, f"✅ NS Toolkit: {len(selected_objects)} mesh(es) processed successfully! (Tris → Quads + Merge + Normals + Reset)")
+        if processed_count > 0:
+            # Update depsgraph to refresh viewport
+            context.evaluated_depsgraph_get().update()
+            self.report({'INFO'}, f"Cleaned {processed_count} mesh(es) successfully")
+        else:
+            self.report({'WARNING'}, "No meshes were processed successfully.")
+            
         return {'FINISHED'}
 
 
@@ -237,7 +270,7 @@ class NS_TOOLKIT_OT_highlight_topology(bpy.types.Operator):
     """Highlight mesh topology for ALL objects in scene using viewport color override"""
     bl_idname = "ns_toolkit.highlight_topology"
     bl_label = "Highlight Topology"
-    bl_options = {'REGISTER'}
+    bl_options = set()
 
     def execute(self, context):
         # Get ALL mesh objects in scene (not just selected)
@@ -247,9 +280,10 @@ class NS_TOOLKIT_OT_highlight_topology(bpy.types.Operator):
             self.report({'WARNING'}, "No mesh objects found in scene.")
             return {'CANCELLED'}
 
-        # Ensure we're in Object mode
-        if context.mode != 'OBJECT':
-            bpy.ops.object.mode_set(mode='OBJECT')
+        # Ensure we're in Object mode (avoid using bpy.ops)
+        if context.active_object and context.active_object.mode != 'OBJECT':
+            # Direct mode setting without bpy.ops
+            context.active_object.mode = 'OBJECT'
         
         # Apply highlighting using the shared function
         apply_topology_highlighting(context)
@@ -259,7 +293,7 @@ class NS_TOOLKIT_OT_highlight_topology(bpy.types.Operator):
         green_count = sum(1 for obj in mesh_objects if obj.color[:3] == (0.0, 1.0, 0.0))
         blue_count = sum(1 for obj in mesh_objects if obj.color[:3] == (0.0, 0.0, 1.0))
         
-        self.report({'INFO'}, f"✅ Highlighted {len(mesh_objects)} objects: {red_count}🔴Tri, {green_count}🟢Quad, {blue_count}🔵N-gon")
+        self.report({'INFO'}, f"Highlighted {len(mesh_objects)} objects: {red_count} Triangle, {green_count} Quad, {blue_count} N-gon")
         return {'FINISHED'}
 
 
@@ -267,7 +301,7 @@ class NS_TOOLKIT_OT_clear_highlight(bpy.types.Operator):
     """Clear mesh topology highlighting and restore original colors for ALL objects"""
     bl_idname = "ns_toolkit.clear_highlight"
     bl_label = "Clear Highlight"
-    bl_options = {'REGISTER'}
+    bl_options = set()
 
     def execute(self, context):
         # Get ALL mesh objects in scene
@@ -280,7 +314,7 @@ class NS_TOOLKIT_OT_clear_highlight(bpy.types.Operator):
         # Clear highlighting using the shared function
         clear_topology_highlighting(context)
         
-        self.report({'INFO'}, f"✅ Topology highlighting cleared for {len(mesh_objects)} objects")
+        self.report({'INFO'}, f"Topology highlighting cleared for {len(mesh_objects)} objects")
         return {'FINISHED'}
 
 
@@ -297,10 +331,6 @@ class VIEW3D_PT_ns_toolkit_panel(bpy.types.Panel):
         scene = context.scene
         ns_props = scene.ns_toolkit_props
         
-        # Header with logo
-        if custom_icons and "nandur_logo" in custom_icons:
-            layout.template_icon(icon_value=custom_icons["nandur_logo"].icon_id, scale=4.0)
-        
         # Highlight topology section
         box = layout.box()
         box.label(text="Topology Visualization", icon="SHADING_WIRE")
@@ -312,9 +342,9 @@ class VIEW3D_PT_ns_toolkit_panel(bpy.types.Panel):
         if ns_props.highlight_topology:
             col = box.column(align=True)
             col.scale_y = 0.8
-            col.label(text="🔵 Blue = Has N-gons", icon="NONE")
-            col.label(text="🔴 Red = Triangle-dominant", icon="NONE")
-            col.label(text="🟢 Green = Quad-dominant", icon="NONE")
+            col.label(text="Blue = Has N-gons", icon="NONE")
+            col.label(text="Red = Triangle-dominant", icon="NONE")
+            col.label(text="Green = Quad-dominant", icon="NONE")
         
         # Main tool section
         layout.separator()
@@ -353,7 +383,6 @@ def menu_func(self, context):
     self.layout.operator(OBJECT_OT_tris_to_quads_merge.bl_idname, icon="FACE_MAPS")
 
 def register():
-    load_logo()
     bpy.utils.register_class(NS_ToolkitProperties)
     bpy.utils.register_class(OBJECT_OT_tris_to_quads_merge)
     bpy.utils.register_class(NS_TOOLKIT_OT_highlight_topology)
@@ -378,7 +407,6 @@ def unregister():
     bpy.utils.unregister_class(NS_TOOLKIT_OT_highlight_topology)
     bpy.utils.unregister_class(OBJECT_OT_tris_to_quads_merge)
     bpy.utils.unregister_class(NS_ToolkitProperties)
-    unload_logo()
 
 if __name__ == "__main__":
     register()

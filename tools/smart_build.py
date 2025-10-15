@@ -41,8 +41,7 @@ class SmartBuilder:
         self.root_dir = Path(__file__).parent.parent  # Go up one level from tools/
         self.source_files = {
             "__init__.py": "__init__.py",
-            "blender_manifest.toml": "blender_manifest.toml",
-            "Nandur93_Logo_192.png": "assets/Nandur93_Logo_192.png"
+            "blender_manifest.toml": "blender_manifest.toml"
         }
         
         # Platform configurations

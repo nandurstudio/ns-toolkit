@@ -7,17 +7,17 @@
 
 ---
 
-## 🎯 Overview
+## Overview
 
 NS Toolkit - Mesh Cleanup Pro is a powerful, **completely free** Blender add-on that combines topology visualization with automated mesh cleanup operations. Perfect for game developers, 3D artists, architects, and anyone working with imported or messy geometry.
 
-**Visualize + Clean:** Topology Highlighting + Tris to Quads + Merge by Distance + Recalculate Normals + Reset Vectors
+**Professional mesh optimization with real-time topology visualization and smart cleanup tools**
 
 ---
 
-## ✨ Features
+## Features
 
-### 👁️ **Topology Visualization**
+### **Topology Visualization**
 - **Highlight Triangles Toggle** - Visual identification of mesh topology
 - **Color-Coded Display**: Red=Triangles, Green=Quads, Blue=N-gons
 - **Real-Time Preview** - See topology before cleanup operations
