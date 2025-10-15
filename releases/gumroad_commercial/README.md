@@ -207,7 +207,7 @@ This add-on is provided "as is" without warranty. Always backup your work before
 ### v1.0.0 (2025) - Initial Release
 - ✅ **Real-Time Topology Visualization**: Scene-wide highlighting with live Edit mode updates
 - ✅ **Smart Color Priority System**: Blue=N-gons, Red=Triangle-dominant, Green=Quad-dominant  
-- ✅ **5-in-1 Professional Toolkit**: Topology Highlight + Tris to Quads + Merge + Normals + Reset Vectors
+- ✅ **Professional Mesh Cleanup Toolkit**: Topology Highlight + Tris to Quads + Merge + Normals + Reset Vectors
 - ✅ **Advanced Performance**: Dual handler system with optimized real-time updates
 - ✅ **Professional UI**: Dynamic version display, branded experience, comprehensive feedback
 - ✅ **Commercial License**: Full commercial usage rights included

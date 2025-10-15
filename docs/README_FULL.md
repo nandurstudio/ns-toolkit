@@ -204,7 +204,7 @@ This add-on is provided "as is" without warranty. Always backup your work before
 - ✅ **Revolutionary Real-Time Topology Visualization**: Industry-first scene-wide highlighting system
 - ✅ **Intelligent Color Coding**: Priority-based detection (Blue=N-gons, Red=Triangles, Green=Quads)
 - ✅ **Live Edit Mode Updates**: Instant visual feedback as you modify mesh topology
-- ✅ **Complete 5-in-1 Toolkit**: Visualization + Tris to Quads + Merge + Normals + Reset Vectors
+- ✅ **Complete Professional Toolkit**: Visualization + Tris to Quads + Merge + Normals + Reset Vectors
 - ✅ **Performance Optimized**: Dual handler system with automatic cleanup
 - ✅ **Professional Interface**: Dynamic version display, branded experience, comprehensive UI
 - ✅ **Cross-Platform Ready**: Dual licensing for Blender Extensions (GPL) and Commercial (Gumroad)

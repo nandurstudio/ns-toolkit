@@ -12,6 +12,7 @@
 - fix bpy.ops usage replaced with bmesh.ops for better reliability
 - fix context-dependent operator calls with lower-level API implementation
 - ensure mode switching uses direct property access instead of operators
+- fix tagline length to comply with 64-character Blender Extensions limit
 
 ### Performance Improvements
 - reduce addon package size by 74% (32.9KB → 8.7KB) by removing logo
@@ -20,6 +21,8 @@
 
 ### Code Quality
 - refactor OBJECT_OT_tris_to_quads_merge operator to use bmesh.ops exclusively
-- remove all emoji characters from code for cleaner implementation  
+- remove all emoji characters from code and documentation for cleaner implementation  
 - replace verbose success messages with concise user-friendly feedback
+- update documentation to use consistent "Professional Mesh Cleanup" terminology
+- improve .gitignore to exclude generated build files and synced platform files
 - ensure Blender Extensions platform best practices compliance

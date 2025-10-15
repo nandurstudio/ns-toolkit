@@ -59,7 +59,7 @@ ns-toolkit/
 
 | File | Purpose | Status |
 |------|---------|--------|
-| `__init__.py` | Main addon with 5-in-1 functionality | ✅ Ready |
+| `__init__.py` | Main addon with professional mesh cleanup functionality | ✅ Ready |
 | `blender_manifest.toml` | Extension metadata | ✅ Compliant |
 | `README.md` | Project overview | ✅ Complete |
 

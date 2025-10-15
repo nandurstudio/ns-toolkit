@@ -8,7 +8,7 @@ schema_version = "1.0.0"
 id = "ns_toolkit_mesh_cleanup_pro"
 version = "1.0.1"
 name = "NS Toolkit - Mesh Cleanup Pro"
-tagline = "Professional mesh optimization with topology visualization and smart cleanup tools"
+tagline = "Professional mesh cleanup with topology visualization tools"
 maintainer = "Nandur Studio (Nandang Duryat)"
 type = "add-on"
 

@@ -45,11 +45,24 @@ env/
 *.blend1
 *.blend2
 
-# Zip files in releases (they're generated)
-releases/*/*.zip
+# Generated packages (they're built from source)
+*.zip
 
-# Exclude but keep structure
-!releases/blender_extensions/
-!releases/gumroad_commercial/
+# Build outputs
 releases/blender_extensions/*.zip
 releases/gumroad_commercial/*.zip
+
+# Keep release directory structure but ignore generated files
+!releases/blender_extensions/
+!releases/gumroad_commercial/
+!releases/blender_extensions/README.md
+!releases/blender_extensions/LICENSE_GPL.txt
+!releases/gumroad_commercial/README.md
+!releases/gumroad_commercial/QUICK_START.md
+!releases/gumroad_commercial/LICENSE.txt
+
+# Ignore generated manifest and init files in releases (synced from root)
+releases/blender_extensions/__init__.py
+releases/blender_extensions/blender_manifest.toml
+releases/gumroad_commercial/__init__.py
+releases/gumroad_commercial/blender_manifest.toml
